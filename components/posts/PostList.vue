@@ -1,9 +1,17 @@
 <template>
-    <ul class="post-list">
-        <li v-for="post in posts" :key="post.id" class="post-list-item">
-            <PostExcerpt :post="post" />
-        </li>
-    </ul>
+    <div>
+        <ul class="m-0 p-0">
+            <li v-for="post in posts" :key="post.id" class="list-unstyled">
+                <PostExcerpt :post="post" />
+            </li>
+        </ul>
+        <nav aria-label="Page navigation example">
+
+            <ul class="pagination">
+                <li v-for="i in +totalPages" :key="i" class="page-item" v-bind:class="{'active': i==6}"><a class="page-link" :href="'/posts/' + i">{{i}}</a></li>
+            </ul>
+        </nav>
+    </div>
 </template>
 
 <script>
@@ -11,7 +19,9 @@
 
     export default {
         props: {
-            posts: { type: Array }
+            posts: { type: Array },
+            totalPages: { type: String },
+            pageNum: { type: String }
         },
         components: {
             PostExcerpt

@@ -1,21 +1,7 @@
 <template>
-  <section class="container">
+  <section>
     <div>
-      <PostList :posts="posts" />
+      <h1>Homepage</h1>
     </div>
   </section>
 </template>
-
-<script>
-  import PostList from '~/components/posts/PostList.vue'
-  import wp from '~/lib/wp'
-
-  export default {
-    async asyncData ({ params }) {
-      return wp.posts()
-    },
-    components: {
-      PostList
-    }
-  }
-</script>
